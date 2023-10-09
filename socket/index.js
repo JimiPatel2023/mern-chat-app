@@ -1,7 +1,11 @@
 const { Server } = require("socket.io");
 const dotenv = require("dotenv").config();
 
-const io = new Server({ cors: process.env.FRONTEND_URL });
+const io = new Server({
+  cors: process.env.FRONTEND_URL,
+  credentials: true,
+  methods: ["GET", "POST"],
+});
 
 let onlineUsers = [];
 
