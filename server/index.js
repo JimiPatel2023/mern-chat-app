@@ -8,7 +8,12 @@ const messageRouter = require("./routes/messageRoutes");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    origin: process.env.FRONTEND_URL,
+  })
+);
 
 app.use("/api/users", userRouter);
 app.use("/api/chats", chatRouter);
